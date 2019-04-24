@@ -29,6 +29,7 @@
 	EJJavaScriptView *view = [[EJJavaScriptView alloc] initWithFrame:frame];
 	self.view = view;
 	
+    [view loadScriptAtPath:@"../EjectaWXBridge.js"];
 	[view loadScriptAtPath:path];
 	[view release];
 }

@@ -289,6 +289,22 @@ EJ_BIND_FUNCTION(toDataURL, ctx, argc, argv) {
 	return [self toDataURLWithCtx:ctx argc:argc argv:argv];
 }
 
+EJ_BIND_FUNCTION(setPreferredFramesPerSecond, ctx, argc, argv ) {
+    //return [scriptView createTimer:ctx argc:argc argv:argv repeat:NO];
+    if( argc != 1 ) {
+        NSLog(@"%@", @"setPreferredFramesPerSecond have no params");
+        return NULL;
+    }
+    
+    NSInteger number = JSValueToNumberFast(ctx, argv[0]);
+    if (number < 1 || number > 60) {
+        NSLog(@"setPreferredFramesPerSecond frame set to %ld not valid", number);
+        return NULL;
+    }
+    scriptView.preferredFramesPerSecond = number;
+    return NULL;
+}
+
 EJ_BIND_CONST(nodeName, "CANVAS");
 EJ_BIND_CONST(tagName, "CANVAS");
 

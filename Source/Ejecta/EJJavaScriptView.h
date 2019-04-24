@@ -106,6 +106,7 @@
 
 @property (nonatomic, retain) NSOperationQueue *backgroundQueue;
 @property (nonatomic, retain) EJClassLoader *classLoader;
+@property (nonatomic, assign) NSInteger preferredFramesPerSecond;
 
 - (id)initWithFrame:(CGRect)frame appFolder:(NSString *)folder;
 

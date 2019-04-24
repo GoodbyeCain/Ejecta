@@ -46,6 +46,8 @@ void EJBlockFunctionFinalize(JSObjectRef object) {
 @synthesize backgroundQueue;
 @synthesize classLoader;
 
+@synthesize preferredFramesPerSecond;
+
 - (id)initWithFrame:(CGRect)frame {
 	return [self initWithFrame:frame appFolder:EJECTA_DEFAULT_APP_FOLDER];
 }
@@ -107,6 +109,11 @@ void EJBlockFunctionFinalize(JSObjectRef object) {
     [EAGLContext setCurrentContext:glCurrentContext];
     
     [self loadScriptAtPath:EJECTA_BOOT_JS];
+}
+
+- (void)setPreferredFramesPerSecond:(NSInteger)frames {
+    preferredFramesPerSecond = frames;
+    [displayLink setPreferredFramesPerSecond:frames];
 }
 
 - (void)dealloc {
